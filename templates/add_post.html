@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Add Post</title>
+{% endblock %}
+
+
+{% block body %}
+<!--Makiing a loop to print the content of the post defined in the main py file-->
+
+<!--Taking input from the website and store the value in db created -->
+<br>
+<h1>What's On Your Mind ? </h1>
+<br>
+<form action="/posts/new" method="POST">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" placeholder="Today's Topic" name="title" id="title" aria-label="Title">
+    <br>
+    <label for="author">Author</label>
+    <input class="form-control" type="text" placeholder="Who's Writing" name="author" id="author" aria-label="Author">
+    <br>
+    Content
+    <label for="content">Content</label>
+    <textarea class="form-control" rows="3" name="content" id="content" placeholder="Let Your Mind Flow Here.."></textarea><br>
+    <input type="submit" value="Post" class="btn btn-dark">
+    <br>
+</form>
+
+{% endblock %}
