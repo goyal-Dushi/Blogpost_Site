@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, validators, SubmitField
+from wtforms.validators import Email, DataRequired, EqualTo, Length
 
 # creating of the flask app
 app = Flask(__name__)
@@ -80,24 +83,12 @@ def index():
 # for the purpose of takin i/p from the website and storing the value iin the db ,import request form flask
 @app.route('/posts', methods=['GET'])
 def posts():
-    # if request.method == 'POST':
-    #     # we are creating the object named post_title etc. so as to take input form the form
-    #     post_title = request.form['title']
-    #     post_content = request.form['content']
-    #     post_author = request.form['author']
-    #     # new_post object created to take input to the blogpost class
-    #     new_post = Blogpost(title=post_title, content=post_content, author=post_author)
-    #     # adding the content to the db in the current session
-    #     db.session.add(new_post)
-    #     # above we are just adding the data temporarily , we need to commit to make it permanent in the db
-    #     db.session.commit()
-    #     return redirect('/posts')
     # if we are not posting , then we are actually getting the data form the db
     if request.method == 'GET':
         # overriding all_posts by the content in the db , by using the blogpost.query.all()
         # we are ordering all the posts bby their date posted
         all_posts = Blogpost.query.order_by(Blogpost.date_postede).all()
-        # below we are sending them to our frontend webisite
+        # below we are sending them to our frontend website
         return render_template('posts.html', posts=all_posts)
 
 
@@ -106,6 +97,7 @@ def delete(id):
     post = Blogpost.query.get_or_404(id)
     db.session.delete(post)
     db.session.commit()
+    flash('Post deleted !', 'danger')
     return redirect('/posts')
 
 
@@ -118,6 +110,7 @@ def edit(id):
         post.content = request.form["content"]
         post.author = request.form["author"]
         db.session.commit()
+        flash('Post Edited', 'info')
         return redirect("/posts")
     # when the url is called , the desired webpage shld be diplayed
     else:
@@ -133,10 +126,33 @@ def newPost():
         new_post = Blogpost(title=post_title, content=post_content, author=post_author)
         db.session.add(new_post)
         db.session.commit()
+        flash('New Post Created', 'info')
         return redirect('/posts')
     else:
-        all_posts = Blogpost.query.order_by(Blogpost.date_postede).all()
         return render_template('add_post.html')
+
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=15)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
+    confirmpwd = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Register')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    pwd = PasswordField('Password', validators=[DataRequired(), ])
+    submit = SubmitField('Login')
+
+
+@app.route('/signin', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for username {form.username.data}', 'success')
+        return redirect('/')
+    return render_template('signin.html', form=form)
 
 
 if __name__ == "__main__":
