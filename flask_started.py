@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, validators, SubmitField
-from wtforms.validators import Email, DataRequired, EqualTo, Length
+from wtforms.validators import DataRequired, EqualTo, Length, email_validator, Email
 
 # creating of the flask app
 app = Flask(__name__)
@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite3'
 # creating the database
 db = SQLAlchemy(app)
-
+app.config['SECRET_KEY'] = '56605f1d4e5c3eb9f68d76a6d6b54605'
 
 # Models : structure the data in the db //Backend stuff : just defined the structure of the db
 class Blogpost(db.Model):
@@ -146,7 +146,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
-@app.route('/signin', methods=['GET', 'POST'])
+@app.route('/signin')
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -154,6 +154,9 @@ def register():
         return redirect('/')
     return render_template('signin.html', form=form)
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
