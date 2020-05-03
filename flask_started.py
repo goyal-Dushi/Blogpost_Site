@@ -15,6 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite3'
 db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = '56605f1d4e5c3eb9f68d76a6d6b54605'
 
+
 # Models : structure the data in the db //Backend stuff : just defined the structure of the db
 class Blogpost(db.Model):
     # creating the fields of the relation
@@ -154,9 +155,18 @@ def register():
         return redirect('/')
     return render_template('signin.html', form=form)
 
-@app.route('/login')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'admin@gmail.com' and form.pwd.data == '123456':
+            flash('You have been Logged in Successfully.', 'success')
+            return redirect('/posts')
+        else:
+            flash('Unsuccessful Log in !', 'danger')
     return render_template('login.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block body %}
+<body background="{{ url_for('static', filename='img/final_sign.jpg') }}" style=" background-repeat:no-repeat; background-size: 100vw 100vh">
 <form class="form-horizontal" action='/' method="POST">
     <fieldset>
+        <br>
         <div id="legend">
-            <legend class="">Register</legend>
+            <legend class="" style="color:white; font-size:45px; font-family:Courier New,courier,monospace;"><b>Register</b></legend>
         </div>
         <div class="control-group">
             <!-- Username -->
-            <label class="control-label" for="username">Username</label>
+            <label class="control-label" for="username" style="color:white;font-size:18px;font-family:Lucida Console, Monaco, monospace";><b>Username</b></label>
             <div class="controls">
                 {% if form.username.errors %}
                     {{ form.username(class="form-horizontal is-invalid") }}
@@ -24,13 +26,13 @@
                 {% else %}
                 <input type="text" id="username" name="username" class="input-xlarge">
                 {% endif %}
-                <p class="help-block">Length of username should be min 2 and max 10 containing char or num.</p>
+                <p class="help-block" style="color:white;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">Length of username should be min 2 and max 10 containing char or num.</p>
             </div>
         </div>
 
         <div class="control-group">
             <!-- E-mail -->
-            <label class="control-label" for="email">E-mail</label>
+            <label class="control-label" for="email" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>E-mail</b></label>
             <div class="controls">
                 {% if form.email.errors %}
                     {{ form.email(class="form-horizontal is-invalid") }}
@@ -47,7 +49,7 @@
 
         <div class="control-group">
             <!-- Password-->
-            <label class="control-label" for="password">Password</label>
+            <label class="control-label" for="password" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>Password</b></label>
             <div class="controls">
                 {% if form.password.errors %}
                     {{ form.password(class="form-horizontal is-invalid") }}
@@ -59,13 +61,13 @@
                 {% else %}
                 <input type="password" id="password" name="password" class="input-xlarge">
                 {% endif %}
-                <p class="help-block">Password should be minimum 4 to maximum 12 characters in length</p>
+                <p class="help-block" style="color:white;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">Password should be minimum 4 to maximum 12 characters in length</p>
             </div>
         </div>
 
         <div class="control-group">
             <!-- Password -->
-            <label class="control-label" for="confirmpwd">Password (Confirm)</label>
+            <label class="control-label" for="confirmpwd" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>Confirm Password</b></label>
             <div class="controls">
                 {% if form.confirmpwd.errors %}
                     {{ form.confirmpwd(class="form-horizontal is-invalid") }}
@@ -79,7 +81,7 @@
                 {% endif %}
             </div>
         </div>
-
+        <br>
         <div class="control-group">
             <!-- Button -->
             <div class="controls">

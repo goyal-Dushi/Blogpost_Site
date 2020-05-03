@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block body %}
+{{ super() }}
+<body background="{{ url_for('static', filename='img/login.jpg') }}" style=" background-repeat:no-repeat; background-size: 100vw 100vh">
+<br><br>
+<br><br>
 <div id="login">
-    <h3 class="text-center text-white pt-5">Login form</h3>
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
+    <div class="container" >
+        <div id="login-row" class="row justify-content-left align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
                     <form id="login-form" class="form" action="/" method="post">
@@ -26,8 +29,8 @@
 <!--                                    id="remember-me" name="remember-me" type="checkbox"></span></label><br>-->
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                         </div>
-                        <div id="register-link" class="text-right">
-                            <a href="/signin" class="text-info">Register here</a>
+                        <div id="register-link" class="text-left">
+                            <a href="/signin" class="text-info">Not a Member? Register here. </a>
                         </div>
                     </form>
                 </div>
