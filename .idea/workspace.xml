@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2bd2681-88de-4595-b15b-1c275687207c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/blogging.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/bluesnow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/final_sign.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/newpost.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/signup.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_started.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_started.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,23 +84,31 @@
       <option name="project" value="LOCAL" />
       <updated>1588432162087</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="layout changes">
+      <created>1588499114153</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588499114200</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Login and Sign in from creation" />
     <MESSAGE value="final layout sign_in and login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="final layout sign_in and login page" />
+    <MESSAGE value="layout changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="layout changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="520" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580363388055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="520" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1580363388055" />
-    <state x="424" y="3" key="CommitChangelistDialog2" timestamp="1588432158205">
+    <state x="424" y="3" key="CommitChangelistDialog2" timestamp="1588499110763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="424" y="3" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588432158205" />
+    <state x="424" y="3" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588499110763" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1588346252116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -120,10 +117,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="639" y="306" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1588346814154" />
-    <state x="88" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1588482350943">
+    <state x="88" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1588500684386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="88" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588482350943" />
+    <state x="88" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588500684386" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579969592229">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
