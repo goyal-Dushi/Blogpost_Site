@@ -6,27 +6,52 @@
 
 {% block body %}
 {{ super() }}
-<body background="{{ url_for('static', filename='img/login.jpg') }}" style=" background-repeat:no-repeat; background-size: 100vw 100vh">
+{{ form.hidden_tag() }}
+
+<body background="{{ url_for('static', filename='img/login.jpg') }}"
+      style=" background-repeat:no-repeat; background-size: 100vw 100vh">
 <br><br>
 <br><br>
 <div id="login">
-    <div class="container" >
+    <div class="container">
         <div id="login-row" class="row justify-content-left align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" action="/" method="post">
+                    <form id="login-form" action=" " method="post">
                         <h3 class="text-center text-info">Login</h3>
                         <div class="form-group">
-                            <label for="email" class="text-info">Username:</label><br>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <!--                            <label for="email" class="text-info">Username:</label><br>-->
+                            {{ form.email.label(class="form-control-label text-primary") }}
+                            {% if form.email.errors %}
+                            {{ form.email(class="form-horizontal is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.email(class="form-control form-control-sm") }}
+                            {% endif %}
+                            <!--                            <input type="email" name="email" id="email" class="form-control">-->
                         </div>
                         <div class="form-group">
-                            <label for="pwd" class="text-info">Password:</label><br>
-                            <input type="password" name="pwd" id="pwd" class="form-control">
+                            {{ form.pwd.label(class="form-control-label text-primary") }}
+                            {% if form.pwd.errors %}
+                            {{ form.pwd(class="form-horizontal is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.pwd.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.pwd(class="form-control form-control-sm") }}
+                            {% endif %}
+                            <!--                            <label for="pwd" class="text-info">Password:</label><br>-->
+                            <!--                            <input type="password" name="pwd" id="pwd" class="form-control">-->
                         </div>
                         <div class="form-group">
-<!--                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input-->
-<!--                                    id="remember-me" name="remember-me" type="checkbox"></span></label><br>-->
+                            <!--                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input-->
+                            <!--                                    id="remember-me" name="remember-me" type="checkbox"></span></label><br>-->
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                         </div>
                         <div id="register-link" class="text-left">

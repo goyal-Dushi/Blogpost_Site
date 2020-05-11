@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, validators, SubmitField
-from wtforms.validators import DataRequired, EqualTo, Length, email_validator, Email
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, EqualTo, Length, Email
 
 # creating of the flask app
 app = Flask(__name__)
@@ -82,7 +82,7 @@ def index():
 
 # passing data from here to the html page(see the posts.html)
 # for the purpose of takin i/p from the website and storing the value iin the db ,import request form flask
-@app.route('/posts', methods=['GET'])
+@app.route('/posts', methods=['GET', 'POST'])
 def posts():
     # if we are not posting , then we are actually getting the data form the db
     if request.method == 'GET':
@@ -137,22 +137,22 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=15)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
-    confirmpwd = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    confirm_pwd = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    pwd = PasswordField('Password', validators=[DataRequired(), ])
+    pwd = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
     submit = SubmitField('Login')
 
 
-@app.route('/signin')
+@app.route('/signin', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for username {form.username.data}', 'success')
-        return redirect('/')
+        return redirect('/login')
     return render_template('signin.html', form=form)
 
 
@@ -160,12 +160,13 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@gmail.com' and form.pwd.data == '123456':
+        if form.email.data == 'admin@gmail.com' and form.pwd.data == 'qwerty':
             flash('You have been Logged in Successfully.', 'success')
-            return redirect('/posts')
+            return redirect(url_for('posts'))
         else:
             flash('Unsuccessful Log in !', 'danger')
-    return render_template('login.html')
+            # redirect('/login')
+    return render_template('login.html', form=form)
 
 
 if __name__ == "__main__":

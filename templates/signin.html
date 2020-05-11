@@ -5,79 +5,90 @@
 {% endblock %}
 
 {% block body %}
-<body background="{{ url_for('static', filename='img/final_sign.jpg') }}" style=" background-repeat:no-repeat; background-size: 100vw 100vh">
-<form class="form-horizontal" action='/' method="POST">
+<body background="{{ url_for('static', filename='img/final_sign.jpg') }}"
+      style=" background-repeat:no-repeat; background-size: 100vw 100vh">
+<form class="form-horizontal" action='' method="POST">
+    <!--    needed the below tag for protection of website-->
+    {{ form.hidden_tag() }}
     <fieldset>
         <br>
         <div id="legend">
-            <legend class="" style="color:white; font-size:45px; font-family:Courier New,courier,monospace;"><b>Register</b></legend>
+            <legend class="" style="color:white; font-size:45px; font-family:Courier New,courier,monospace;">
+                <b>Register</b></legend>
         </div>
-        <div class="control-group">
+        <div class="form-group">
             <!-- Username -->
-            <label class="control-label" for="username" style="color:white;font-size:18px;font-family:Lucida Console, Monaco, monospace";><b>Username</b></label>
+            <!--            <label class="control-label" for="username" style="color:white;font-size:18px;font-family:Lucida Console, Monaco, monospace";><b>Username</b></label>-->
+            {{ form.username.label(class="form-control-label text-warning") }}
             <div class="controls">
                 {% if form.username.errors %}
-                    {{ form.username(class="form-horizontal is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.username.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
+                {{ form.username(class="form-horizontal is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
                 {% else %}
-                <input type="text" id="username" name="username" class="input-xlarge">
+                {{ form.username(class="form-control form-control-sm") }}
                 {% endif %}
-                <p class="help-block" style="color:white;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">Length of username should be min 2 and max 10 containing char or num.</p>
+<!--                <p class="help-block"-->
+<!--                   style="color:white;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size:14px;">-->
+<!--                    Length of username should be min 2 and max 10 containing char or num.</p>-->
             </div>
         </div>
-
-        <div class="control-group">
+        <br>
+        <div class="form-group">
             <!-- E-mail -->
-            <label class="control-label" for="email" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>E-mail</b></label>
+            <!--            <label class="control-label" for="email" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>E-mail</b></label>-->
+            {{ form.email.label(class="form-control-label text-warning") }}
             <div class="controls">
                 {% if form.email.errors %}
-                    {{ form.email(class="form-horizontal is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
+                {{ form.email(class="form-horizontal is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
                 {% else %}
-                <input type="text" id="email" name="email" class="input-xlarge">
+                {{ form.email(class="form-control form-control-sm") }}
                 {% endif %}
             </div>
         </div>
-
-        <div class="control-group">
+        <br>
+        <div class="form-group">
             <!-- Password-->
-            <label class="control-label" for="password" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>Password</b></label>
+            {{ form.password.label(class="form-control-label text-warning") }}
             <div class="controls">
                 {% if form.password.errors %}
-                    {{ form.password(class="form-horizontal is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
+                {{ form.password(class="form-horizontal is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
                 {% else %}
-                <input type="password" id="password" name="password" class="input-xlarge">
+                {{ form.password(class="form-control form-control-sm") }}
                 {% endif %}
-                <p class="help-block" style="color:white;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">Password should be minimum 4 to maximum 12 characters in length</p>
+<!--                <p class="help-block"-->
+<!--                   style="color:white;font-size:14px;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">-->
+<!--                    Password should be minimum 4 to maximum 12 characters in length</p>-->
             </div>
         </div>
-
-        <div class="control-group">
-            <!-- Password -->
-            <label class="control-label" for="confirmpwd" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>Confirm Password</b></label>
+        <br>
+        <div class="form-group">
+            <!--Confirm Password -->
+            <!--            <label class="control-label" for="confirm_pwd" style="color:white; font-size:18px;font-family:Lucida Console, Monaco, monospace;"><b>Confirm Password</b></label>-->
+            {{ form.confirm_pwd.label(class="form-control-label text-warning") }}
             <div class="controls">
-                {% if form.confirmpwd.errors %}
-                    {{ form.confirmpwd(class="form-horizontal is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.confirmpwd.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
+                {% if form.confirm_pwd.errors %}
+                {{ form.confirm_pwd(class="form-horizontal is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_pwd.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
                 {% else %}
-                <input type="password" id="confirmpwd" name="confirmpwd" class="input-xlarge">
+                {{ form.confirm_pwd(class="form-control form-control-sm") }}
                 {% endif %}
             </div>
         </div>
