@@ -135,14 +135,14 @@ def newPost():
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=15)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email(message="Requires Valid Email Address")])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
     confirm_pwd = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email(message="Login with registered Email address")])
     pwd = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
     submit = SubmitField('Login')
 
