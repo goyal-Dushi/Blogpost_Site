@@ -5,6 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_started.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_started.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589212710243</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mobile ready">
+      <created>1589482349355</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589482349355</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -114,13 +124,14 @@
     <MESSAGE value="layout changes" />
     <MESSAGE value="title edit" />
     <MESSAGE value="form group changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="form group changed" />
+    <MESSAGE value="mobile ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile ready" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="3" key="CommitChangelistDialog2" timestamp="1589212704978">
+    <state x="424" y="3" key="CommitChangelistDialog2" timestamp="1589482343695">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="424" y="3" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589212704978" />
+    <state x="424" y="3" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589482343695" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1588346252116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -129,9 +140,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="639" y="306" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1588346814154" />
-    <state x="88" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1589473356117">
+    <state x="88" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1592145236198">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="88" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589473356117" />
+    <state x="88" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1592145236198" />
   </component>
 </project>

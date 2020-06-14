@@ -142,7 +142,7 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email(message="Login with registered Email address")])
+    login_email = StringField('Email', validators=[DataRequired(), Email(message="Login with registered Email address")])
     pwd = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
     submit = SubmitField('Login')
 
@@ -160,12 +160,12 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@gmail.com' and form.pwd.data == 'qwerty':
+        if form.login_email.data == 'admin@gmail.com' and form.pwd.data == 'qwerty':
             flash('You have been Logged in Successfully.', 'success')
-            return redirect(url_for('posts'))
+            return redirect('/posts')
         else:
             flash('Unsuccessful Log in !', 'danger')
-            # redirect('/login')
+            return redirect('/login')
     return render_template('login.html', form=form)
 
 
