@@ -17,6 +17,20 @@ app.config['SECRET_KEY'] = '56605f1d4e5c3eb9f68d76a6d6b54605'
 
 
 # Models : structure the data in the db //Backend stuff : just defined the structure of the db
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True, nullable=False)
+    user_email = db.Column(db.String(30), unique=True, nullable=False)
+    # encoded pwd ,so string length long
+    user_pwd = db.Column(db.String(60), nullable=False)
+    # a user can have many posts , so assining the posts db to user
+    posts = db.relationship('Blogpost', backref='writer', lazy=True)
+
+    # how are object is printed
+    def __repr__(self):
+        return f"User : {self.username} and {self.user_email}"
+
+
 class Blogpost(db.Model):
     # creating the fields of the relation
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +38,8 @@ class Blogpost(db.Model):
     content = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(20), nullable=False, default='N/A')
     date_postede = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    # getting the user who created this post
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     # this is going to print out,whenever we create a new Blogpost ,the model when created !!
     def __repr__(self):
@@ -142,7 +158,8 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    login_email = StringField('Email', validators=[DataRequired(), Email(message="Login with registered Email address")])
+    login_email = StringField('Email',
+                              validators=[DataRequired(), Email(message="Login with registered Email address")])
     pwd = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=12)])
     submit = SubmitField('Login')
 
